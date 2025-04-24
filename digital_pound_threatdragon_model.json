@@ -1,0 +1,158 @@
+{
+  "summary": {
+    "title": "Digital Pound Lab Threat Model",
+    "owner": "Digital Identity Team",
+    "description": "Threat model including Wallet, PIP, ESIP, VC flows, Core API Gateway",
+    "id": "36e736fa-83ec-43a6-8c4c-3fddea352927"
+  },
+  "detail": {
+    "diagrams": [
+      {
+        "title": "Data Flow Diagram \u2013 Core Interactions",
+        "id": "7150186b-b400-4d8b-89de-4a5c8aa47930",
+        "diagramType": "DFD",
+        "processes": [
+          {
+            "id": "f95f93c9-5b59-4662-87cd-b85d426c11b4",
+            "name": "Wallet App",
+            "type": "Process",
+            "bounds": {
+              "x": 100,
+              "y": 100
+            }
+          },
+          {
+            "id": "6c925102-b558-4661-9c74-b29eaa347d9c",
+            "name": "PIP Backend",
+            "type": "Process",
+            "bounds": {
+              "x": 300,
+              "y": 100
+            }
+          },
+          {
+            "id": "2cd12e2b-e3b4-4b7c-a41a-1fb18ac24407",
+            "name": "ESIP Services",
+            "type": "Process",
+            "bounds": {
+              "x": 500,
+              "y": 100
+            }
+          },
+          {
+            "id": "ddd05a62-8e0a-4c2b-a4d2-c9b2d0d2b7a8",
+            "name": "VC Issuance App",
+            "type": "Process",
+            "bounds": {
+              "x": 300,
+              "y": 300
+            }
+          },
+          {
+            "id": "b7db85d3-6105-4c99-ba89-ca5f318c5d2f",
+            "name": "Core API Gateway",
+            "type": "Process",
+            "bounds": {
+              "x": 300,
+              "y": 500
+            }
+          }
+        ],
+        "actors": [
+          {
+            "id": "82236281-68a1-427d-8071-878b2990fc1c",
+            "name": "User",
+            "type": "Actor",
+            "bounds": {
+              "x": 100,
+              "y": 0
+            }
+          },
+          {
+            "id": "499a13ff-f607-4698-8444-585d3df61a51",
+            "name": "Ecommerce Site",
+            "type": "Actor",
+            "bounds": {
+              "x": 100,
+              "y": 200
+            }
+          },
+          {
+            "id": "e51f1d20-7eeb-4163-9e4f-d5528c5fbb55",
+            "name": "Chat App",
+            "type": "Actor",
+            "bounds": {
+              "x": 500,
+              "y": 0
+            }
+          },
+          {
+            "id": "227a74cf-3a66-4786-8528-73c2c3b75dcb",
+            "name": "Entra Verified ID",
+            "type": "Actor",
+            "bounds": {
+              "x": 500,
+              "y": 200
+            }
+          }
+        ],
+        "flows": [
+          {
+            "id": "fdf3bca9-adac-4c76-b0f5-948f85e04c16",
+            "source": "User",
+            "target": "Wallet App",
+            "name": "User Interaction"
+          },
+          {
+            "id": "1ea444a6-b56b-4f53-b666-2c864bd4b6bf",
+            "source": "Wallet App",
+            "target": "PIP Backend",
+            "name": "User Request (Tx/Balance)"
+          },
+          {
+            "id": "e121ec7a-ef21-46f5-9660-2ffcaf32c3b9",
+            "source": "Ecommerce Site",
+            "target": "PIP Backend",
+            "name": "Payment Trigger"
+          },
+          {
+            "id": "33f740f6-48bb-49b3-96fc-339d4bc9d035",
+            "source": "Chat App",
+            "target": "PIP Backend",
+            "name": "Chat Command/API Call"
+          },
+          {
+            "id": "ce059948-3df0-4760-8dd7-513219831b80",
+            "source": "Entra Verified ID",
+            "target": "VC Issuance App",
+            "name": "KYC Credential"
+          },
+          {
+            "id": "700c3d54-f08f-44ba-943f-ccc1c5b377f8",
+            "source": "VC Issuance App",
+            "target": "Wallet App",
+            "name": "Issue Verifiable Credential"
+          },
+          {
+            "id": "43aec4cc-1d82-4717-92aa-a06e6feb0988",
+            "source": "PIP Backend",
+            "target": "Core API Gateway",
+            "name": "Transaction / API Call"
+          },
+          {
+            "id": "78ccc30c-aa49-4105-b138-58a5db97b1d6",
+            "source": "ESIP Services",
+            "target": "Core API Gateway",
+            "name": "Read / Analytics Access"
+          },
+          {
+            "id": "8b9a0f6b-4613-4aec-b9a3-72e9cb277e2e",
+            "source": "VC Issuance App",
+            "target": "Core API Gateway",
+            "name": "VC Proof Submission"
+          }
+        ]
+      }
+    ]
+  }
+}
